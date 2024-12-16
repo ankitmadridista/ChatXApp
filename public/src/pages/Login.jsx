@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from 'styled-components';
 import Logo from "../assets/logo.svg";
@@ -48,10 +48,7 @@ function Login() {
     if (handleValidation()) {
       //api call
       const { username, password } = values;
-      console.log(loginRoute);
-
       const { data } = await axios.post(loginRoute, { username, password });
-      console.log('data', data);
 
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
@@ -60,6 +57,7 @@ function Login() {
       if (data.status === true) {
         localStorage.setItem('chat-app-user', JSON.stringify(data.user));
       }
+      toast.dismiss();//
       navigate("/");
     }
     else {
