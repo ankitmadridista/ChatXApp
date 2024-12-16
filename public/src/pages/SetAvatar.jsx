@@ -60,11 +60,14 @@ const SetAvatar = () => {
 
 
     useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         const fetchAvatars = async () => {
             const data = [];
             for (let i = 0; i < 4; i++) {
                 try {
-                    const response = await axios.get(`${api}/${Math.round(Math.random() * 1000)}`);
+                    const response = await axios.get(`${api}/${Math.round(Math.random() * 1000)}`, { signal });
                     const svgMarkup = response.data;
 
                     // If we have raw SVG, encode it to base64
@@ -79,6 +82,9 @@ const SetAvatar = () => {
         };
 
         fetchAvatars();
+        return () => {
+            controller.abort();  // Cancel the request on unmount
+        };
     }, []);
 
     return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from 'styled-components';
 import Logo from "../assets/logo.svg";
@@ -57,8 +57,6 @@ function Register() {
     if (handleValidation()) {
       //api call
       const { username, email, password } = values;
-      console.log(registerRoute);
-      
       const { data } = await axios.post(registerRoute, { username, email, password });
       if(data.status === false){
         toast.error(data.msg, toastOptions);
