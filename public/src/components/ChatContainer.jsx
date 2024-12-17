@@ -1,12 +1,18 @@
+import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
+import { sendMessageRoute } from '../utils/APIRoutes';
 import ChatInput from './ChatInput';
 import Logout from './Logout';
 import Messages from './Messages';
 
-const ChatContainer = ({ currentChat }) => {
+const ChatContainer = ({ currentChat, currentUser }) => {
     const handleSendMessgae = async (msg) => {
-
+        await axios.post(sendMessageRoute, {
+            from: currentUser?._id,
+            to: currentChat._id,
+            message: msg,
+        })
     }
     return (
         <Container>
@@ -19,9 +25,9 @@ const ChatContainer = ({ currentChat }) => {
                         <h3>{currentChat?.username}</h3>
                     </div>
                 </div>
-                <Logout/>
+                <Logout />
             </div>
-            <Messages/>
+            <Messages />
             <ChatInput handleSendMessgae={handleSendMessgae} />
         </Container>
     )
