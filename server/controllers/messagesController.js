@@ -21,23 +21,22 @@ module.exports.addMessage = async (req, res, next) => {
 
 module.exports.getAllMessages = async (req, res, next) => {
     try {
-        const { username, email, password } = req.body;
-        const usernameCheck = await User.findOne({ username });
-        if (usernameCheck) {
-            return res.json({ msg: "Username already used", status: false });
-        }
-        const emailCheck = await User.findOne({ email });
-        if (emailCheck) {
-            return res.json({ msg: "Eamil already used", status: false });
-        }
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const { from, to } = req.body;
+        const messages = await messageModel.find({ users:
+            {
+                $all: [from, to],
+            }
+         }).sort({ updatedAt : 1});
 
-        const user = await User.create({
-            username, email, password: hashedPassword
+       
+        const projectedMessages = messages.map((msg) => {
+            return{
+                fromSelf: msg.sender.toString() == from,
+                message: msg.message.text,
+            };
         });
 
-        delete user.password;
-        return res.json({ status: true, user });
+        return res.json(projectedMessages);
     } catch (error) {
         next(error);
     }
