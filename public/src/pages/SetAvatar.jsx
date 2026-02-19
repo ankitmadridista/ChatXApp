@@ -28,11 +28,11 @@ const SetAvatar = () => {
         return btoa(unescape(encodeURIComponent(svg)));
     };
 
-    useEffect(async () => {
+    useEffect(() => {
         if (!localStorage.getItem("chat-app-user")) {
             navigate("/login");
         }
-    }, [])
+    }, [navigate])
 
     const setProfilePicture = async () => {
         if (selectedAvatar === undefined) {
