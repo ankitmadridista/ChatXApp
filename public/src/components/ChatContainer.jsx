@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { getAllMessagesRoute, sendMessageRoute } from '../utils/APIRoutes';
 import ChatInput from './ChatInput';
 import Logout from './Logout';
-import Messages from './Messages';
-
 const ChatContainer = ({ currentChat, currentUser }) => {
     const [messages, setMessages] = useState([]);
 

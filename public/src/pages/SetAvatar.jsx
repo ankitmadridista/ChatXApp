@@ -28,7 +28,7 @@ const SetAvatar = () => {
         return btoa(unescape(encodeURIComponent(svg)));
     };
 
-    useEffect(async () => {
+    useEffect(() => {
         if (!localStorage.getItem("chat-app-user")) {
             navigate("/login");
         }

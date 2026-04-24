@@ -75,7 +75,7 @@ function Login() {
       <form onSubmit={(event) => handleSubmit(event)} >
         <div className="brand">
           <img src={Logo} alt="Logo" />
-          <h1>ChatXapp</h1>
+          <h1>Hushline</h1>
         </div>
         <input type="text" placeholder="username" name="username" onChange={e => handleChange(e)} min="3" />
         <input type="password" placeholder="password" name="password" onChange={e => handleChange(e)} min="3" />
