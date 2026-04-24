@@ -28,7 +28,7 @@ function Login() {
     if (localStorage.getItem("chat-app-user")) {
       navigate("/");
     }
-  }, [])
+  }, [navigate])
 
   const handleValidation = () => {
     const { username, password } = values;
