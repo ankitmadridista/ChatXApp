@@ -1,52 +1,46 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Chat from "./pages/Chat";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import SetAvatar from "./pages/SetAvatar";
-import { ToastContainer } from "react-toastify"; // Import ToastContainer
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ThemeProvider } from './context/ThemeContext';
+import Chat from './pages/Chat';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import SetAvatar from './pages/SetAvatar';
 
-// Error Boundary Component
 class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Update state so the next render shows the fallback UI.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, info) {
-    // Log the error or send it to a monitoring service
-    console.error("Error occurred: ", error, info);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <h1>Something went wrong. Please try again later.</h1>;
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
     }
-
-    return this.props.children;
-  }
+    static getDerivedStateFromError() {
+        return { hasError: true };
+    }
+    componentDidCatch(error, info) {
+        console.error('Error occurred:', error, info);
+    }
+    render() {
+        if (this.state.hasError) {
+            return <h1 style={{ color: 'white', textAlign: 'center', marginTop: '2rem' }}>Something went wrong. Please refresh.</h1>;
+        }
+        return this.props.children;
+    }
 }
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <ErrorBoundary>
-        <Routes>
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/setAvatar' element={<SetAvatar />} />
-          <Route path='/' element={<Chat />} />
-        </Routes>
-      </ErrorBoundary>
-      
-      {/* Add ToastContainer here */}
-      <ToastContainer /> 
-    </BrowserRouter>
-  );
+    return (
+        <ThemeProvider>
+            <BrowserRouter>
+                <ErrorBoundary>
+                    <Routes>
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/setAvatar" element={<SetAvatar />} />
+                        <Route path="/" element={<Chat />} />
+                    </Routes>
+                </ErrorBoundary>
+                <ToastContainer />
+            </BrowserRouter>
+        </ThemeProvider>
+    );
 }

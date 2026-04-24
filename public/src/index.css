@@ -1,21 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* ── Theme tokens ─────────────────────────────────────────────── */
+:root[data-theme='dark'] {
+    --bg-page:          #0f0c29;
+    --bg-app:           #0d0d2b;
+    --bg-sidebar:       #080420;
+    --bg-header:        #080420;
+    --bg-input:         #080420;
+    --bg-bubble-self:   linear-gradient(135deg, #5b21b6, #7c3aed);
+    --bg-bubble-other:  #1e1b4b;
+    --bg-contact-hover: #ffffff0d;
+    --bg-contact-sel:   #9a86f320;
+    --bg-card:          #ffffff08;
+    --bg-field:         #ffffff0d;
+    --bg-field-focus:   #ffffff12;
 
-*{
+    --text-primary:     #f0f0f0;
+    --text-secondary:   #ffffffaa;
+    --text-muted:       #ffffff50;
+    --text-bubble-self: #ffffff;
+    --text-bubble-other:#d4d4d8;
+    --text-label:       #ffffff80;
+
+    --border:           #ffffff12;
+    --border-field:     #ffffff20;
+    --border-field-focus:#9a86f3;
+    --border-sel:       #9a86f3;
+
+    --accent:           #7c3aed;
+    --accent-gradient:  linear-gradient(135deg, #4e0eff, #9a86f3);
+    --accent-btn:       linear-gradient(135deg, #4e0eff, #9a86f3);
+
+    --shadow-app:       0 20px 60px rgba(0,0,0,0.5);
+    --scrollbar:        #ffffff18;
+    --online:           #4caf50;
+}
+
+:root[data-theme='light'] {
+    --bg-page:          #f0f2f5;
+    --bg-app:           #ffffff;
+    --bg-sidebar:       #f7f7fb;
+    --bg-header:        #ffffff;
+    --bg-input:         #f7f7fb;
+    --bg-bubble-self:   linear-gradient(135deg, #5b21b6, #7c3aed);
+    --bg-bubble-other:  #e9e9f0;
+    --bg-contact-hover: #f0eeff;
+    --bg-contact-sel:   #ede9fe;
+    --bg-card:          #ffffff;
+    --bg-field:         #f3f4f6;
+    --bg-field-focus:   #ede9fe;
+
+    --text-primary:     #111827;
+    --text-secondary:   #374151;
+    --text-muted:       #9ca3af;
+    --text-bubble-self: #ffffff;
+    --text-bubble-other:#1f2937;
+    --text-label:       #6b7280;
+
+    --border:           #e5e7eb;
+    --border-field:     #d1d5db;
+    --border-field-focus:#7c3aed;
+    --border-sel:       #7c3aed;
+
+    --accent:           #7c3aed;
+    --accent-gradient:  linear-gradient(135deg, #4e0eff, #9a86f3);
+    --accent-btn:       linear-gradient(135deg, #4e0eff, #9a86f3);
+
+    --shadow-app:       0 8px 32px rgba(0,0,0,0.12);
+    --scrollbar:        #d1d5db;
+    --online:           #16a34a;
+}
+
+/* ── Reset ────────────────────────────────────────────────────── */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body,button,input{
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  /* font-weight: bolder; */
-  font-style: normal;
+body,
+button,
+input {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-body{
-    max-height: 100ch;
-    max-width: 100vw;
+body {
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    transition: background-color 0.2s, color 0.2s;
 }
