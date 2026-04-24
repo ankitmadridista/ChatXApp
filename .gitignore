@@ -1,0 +1,44 @@
+# ─── Dependencies ────────────────────────────────────────────────────────────
+node_modules/
+public/node_modules/
+server/node_modules/
+
+# ─── Production builds ───────────────────────────────────────────────────────
+public/build/
+dist/
+
+# ─── Environment variables ───────────────────────────────────────────────────
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+
+# ─── Lockfile duplicates (keep only package-lock.json) ───────────────────────
+yarn.lock
+public/yarn.lock
+server/yarn.lock
+
+# ─── Logs ────────────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── OS files ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Editor / IDE ────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── Testing ─────────────────────────────────────────────────────────────────
+coverage/
+public/coverage/
