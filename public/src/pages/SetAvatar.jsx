@@ -29,7 +29,7 @@ const SetAvatar = () => {
     };
 
     useEffect(() => {
-        if (!localStorage.getItem("chat-app-user")) {
+        if (!localStorage.getItem("chattiq-user")) {
             navigate("/login");
         }
     }, [navigate])
@@ -39,7 +39,7 @@ const SetAvatar = () => {
             toast.error("Please selete an avatar", toastOptions);
         }
         else {
-            const user = await JSON.parse(localStorage.getItem("chat-app-user"));
+            const user = await JSON.parse(localStorage.getItem("chattiq-user"));
             const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
                 image: avatars[selectedAvatar],
             });
@@ -49,7 +49,7 @@ const SetAvatar = () => {
             if (data.isSet) {
                 user.isAvatarImageSet = true;
                 user.avatarImage = data.image;
-                localStorage.setItem("chat-app-user", JSON.stringify(user));
+                localStorage.setItem("chattiq-user", JSON.stringify(user));
                 navigate("/");
             }
             else {

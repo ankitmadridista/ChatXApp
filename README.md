@@ -1,4 +1,4 @@
-# ChatXApp
+# Chattiq
 
 A real-time chat application built with React, Node.js/Express, MongoDB, and Socket.IO. Users can register, pick an avatar, and exchange messages with other registered users in real time.
 
@@ -7,7 +7,7 @@ A real-time chat application built with React, Node.js/Express, MongoDB, and Soc
 ## Architecture
 
 ```
-ChatXApp/
+Chattiq/
 ├── public/          # React frontend (Create React App)
 │   └── src/
 │       ├── pages/           # Route-level components
@@ -90,7 +90,7 @@ Create `server/.env`:
 
 ```env
 PORT=5000
-MONGO_URL=mongodb://localhost:27017/chatxapp
+MONGO_URL=mongodb://localhost:27017/chattiq
 ```
 
 Start the server:

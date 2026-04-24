@@ -17,10 +17,10 @@ function Chat() {
   useEffect(() => {
     // Define an async function inside the useEffect
     const fetchData = async () => {
-      if (!localStorage.getItem("chat-app-user")) {
+      if (!localStorage.getItem("chattiq-user")) {
         navigate("/login");
       } else {
-        setCurrentUser(JSON.parse(localStorage.getItem("chat-app-user")));
+        setCurrentUser(JSON.parse(localStorage.getItem("chattiq-user")));
         setIsLoaded(true);
       }
     };

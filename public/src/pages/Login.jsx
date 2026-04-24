@@ -25,7 +25,7 @@ function Login() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem("chat-app-user")) {
+    if (localStorage.getItem("chattiq-user")) {
       navigate("/");
     }
   }, [navigate])
@@ -55,7 +55,7 @@ function Login() {
         return false;
       }
       if (data.status === true) {
-        localStorage.setItem('chat-app-user', JSON.stringify(data.user));
+        localStorage.setItem('chattiq-user', JSON.stringify(data.user));
       }
       toast.dismiss();//
       navigate("/");
@@ -75,7 +75,7 @@ function Login() {
       <form onSubmit={(event) => handleSubmit(event)} >
         <div className="brand">
           <img src={Logo} alt="Logo" />
-          <h1>Hushline</h1>
+          <h1>Chattiq</h1>
         </div>
         <input type="text" placeholder="username" name="username" onChange={e => handleChange(e)} min="3" />
         <input type="password" placeholder="password" name="password" onChange={e => handleChange(e)} min="3" />
