@@ -1,6 +1,6 @@
 const messageModel = require("../model/messageModel");
 const Messages = require("../model/messageModel");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 module.exports.addMessage = async (req, res, next) => {
     try {
