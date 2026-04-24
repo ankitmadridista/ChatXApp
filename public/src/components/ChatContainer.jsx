@@ -46,19 +46,18 @@ const ChatContainer = ({ currentChat, currentUser, socket, onBack }) => {
     // BUG FIX: only accept incoming messages from the currently open chat
     useEffect(() => {
         if (!socket?.current) return;
+        const socketInstance = socket.current;
 
         const handler = (data) => {
-            // data contains { msg, from } — only show if it's from the current chat partner
             if (data.from === currentChat?._id) {
                 setArrivalMessage({ fromSelf: false, message: data.msg });
             }
         };
 
-        socket.current.on('msg-recieve', handler);
+        socketInstance.on('msg-recieve', handler);
 
-        // Cleanup listener when chat changes or component unmounts
         return () => {
-            socket.current?.off('msg-recieve', handler);
+            socketInstance.off('msg-recieve', handler);
         };
     }, [socket, currentChat]);
 
